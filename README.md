@@ -20,7 +20,7 @@ Main game pseudocode:
  * Reduce enemy HP by current attack power
  * Add base attack power to current attack power
  * If enemy HP <= 0:
- * > Remove defender from screen
+ * > Remove defender from game
  * > Game text: "choose another defender"
  * > Disable attack button (game text: "nothing to attack")
  * > Enable defender select onclick
@@ -33,7 +33,8 @@ Main game pseudocode:
  * > > Game text: both damage values
 
 * On restart:
- * Reset all characters to initial positions
+ * Reset all characters to initial positions (revive "dead" characters)
  * Reset all character HP and current attack power to starting values
+ * Reset all character backgrounds to white
  * Disable attack button
  * Hide restart button
