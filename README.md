@@ -29,8 +29,8 @@ Main game pseudocode:
  * > If player HP <= 0:
  * > > Game text: "Game over!"
  * > > Show restart button
- * > > (BREAK)
- * > Game text: both damage values
+ * > Else:
+ * > > Game text: both damage values
 
 * On restart:
  * Reset all characters to initial positions
