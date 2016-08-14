@@ -99,7 +99,7 @@ var game = {
 
 			// Pauses a sound effect for wrong letter (outcome == "wrong") so win/lose game sound can be heard
 			if (interrupt) {
-				this.currentSfx.pause();
+				if (this.currentSfx) { this.currentSfx.pause(); }
 			}
 
 			// Does not play sound effect for wrong letter if sound effect is already in progress
@@ -177,7 +177,6 @@ var game = {
 		this.staticWordList = data;
 		this.newWord();
 		this.updateText();
-		this.playSound
 	}
 };
 
