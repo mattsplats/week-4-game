@@ -10,7 +10,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/superhero/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap_override.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/hangman.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/rpg.css">
 
 	<title>Portfolio: RPG Game</title>
 </head>
@@ -38,7 +38,7 @@
 	</nav>
 
 	<div class="container main">
-		<div class="row fade-in bottom-margin">
+		<!-- <div class="row fade-in">
 			<section class="col-md-12">
 				<div class="page-header"><h2>RPG: Star Wars Edition</h2></div>
 
@@ -47,15 +47,64 @@
 					<small class="text-muted"><cite title="Source Title">Master Yoda</cite></small>
 				</blockquote>
 			</section>
-		</div>
+		</div> -->
 
-		<div class="row fade-in min-height bottom-margin">
+		<div class="row fade-in">
 			<section class="col-md-12">
-				<div class="bottom-margin"><img id="currentImage" class="img-responsive center-block fade-in" src="assets/images/hangman/logo.png"></div>
+				
+				<!-- Choose player from here -->
+				<div id="choose_char" class="flex">
+					<div id="char_0" class="char-box" value=0>
+						<div id="name_0" class="text-center char-text">0</div>
+						<img src="assets/images/rpg/lorem.jpg">
+						<div id="hp_0" class="text-center char-text">100</div>
+					</div>
+					<div id="char_1" class="char-box" value=1>
+						<div id="name_1" class="text-center char-text">1</div>
+						<img src="assets/images/rpg/lorem.jpg">
+						<div id="hp_1" class="text-center char-text">100</div>
+					</div>
+					<div id="char_2" class="char-box" value=2>
+						<div id="name_2" class="text-center char-text">2</div>
+						<img src="assets/images/rpg/lorem.jpg">
+						<div id="hp_2" class="text-center char-text">100</div>
+					</div>
+					<div id="char_3" class="char-box" value=3>
+						<div id="name_3" class="text-center char-text">3</div>
+						<img src="assets/images/rpg/lorem.jpg">
+						<div id="hp_3" class="text-center char-text">100</div>
+					</div>
+				</div>
+
+				<!-- Shows player character -->
+				<div>
+					<h3>Your Character</h3>
+					<div id="player" class="flex"></div>
+				</div>
+
+				<!-- Choose enemy from here -->
+				<div>
+					<h3>Enemies Available To Attack</h3>
+					<div id="enemies" class="flex"></div>
+				</div>
+
+				<!-- Attack button -->
+				<div>
+					<h3>Fight Section</h3>
+					<button id="attack" class="btn btn-default">Attack</button>
+				</div>
+
+				<!-- Shows defender, battle text, and restart button (plus hidden div for dead enemies) -->
+				<div>
+					<h3>Defender</h3>
+					<div id="defender" class="flex"></div>
+					<div id="battle_text"></div>
+					<button id="restart" class="btn btn-default">Restart</button>
+				</div>
 			</section>
 		</div>
 
-		<div class="row fade-in bottom-margin">
+		<div class="row fade-in top-margin">
 			<section class="col-md-12 text-center">
 				<div>
 					<button id="musicToggle" class="btn btn-default">Music: <span id="musicPlaying">Playing</span></button>&nbsp;&nbsp;
@@ -71,14 +120,13 @@
 		</div>
 	</footer>
 
-	<!-- <audio id="music" src="assets/music/themesong.mp3" autoplay loop></audio> -->
-
-	<script src="assets/javascript/tabletop.js"></script>
-	<script src="assets/javascript/loaddata.js"></script>  <!-- Get Google Sheets data loaded ASAP -->
+	<!-- <audio id="music" src="assets/music/imperialmarch.mp3" preload="none"></audio> -->
 
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="assets/javascript/tabletop.js"></script>
+	<script src="assets/javascript/loaddata.js"></script>
+	<script src="assets/javascript/rpg.js"></script>
 	<script src="https://bootswatch.com/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="https://bootswatch.com/assets/js/custom.js"></script>
-	<script src="assets/javascript/rpg.js"></script>
 </body>
 </html>
