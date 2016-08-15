@@ -28,6 +28,11 @@ body {
 	margin-bottom: 8px;
 }
 
+.char-portrait {
+	width: 150px;
+	height: 100px;
+}
+
 .char-text {
 	color: black;
 }

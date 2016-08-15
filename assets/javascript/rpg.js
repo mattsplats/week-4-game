@@ -16,10 +16,10 @@ let game = {
 	enemiesDefeated: 0,
 	player: {},
 	
-	// General methods
+	// Methods
 	initialize: function(data) {
 		// Store sheets data in local array
-		this.characterArray = data.slice();
+		this.characterArray = data;
 
 		// Update character names and stats, convert all attack values to int
 		for (let i = 0; i < data.length; i++) {
@@ -27,18 +27,21 @@ let game = {
 			$("#hp_" + i).html(data[i].HP);
 			this.characterArray[i].attack = parseInt(this.characterArray[i].attack);
 		}
+
+		// Ready to pick a player character
 		this.pickCharEnabled = true;
 	}
 };
 
 $(function() {
 	// Load music on start
-	// $("#music").trigger("load");
-	// $("#music").prop("volume", 0.05);
-	// $("#music").trigger("play");
+	$("#music").trigger("load");
+	$("#music").prop("volume", 0.05);
+	$("#music").trigger("play");
 
-	// Character buttons
+	// Character portraits
 	$(".char-box").on("click", function(event){
+		// 1st stage: no player character chosen
 		if (game.pickCharEnabled) {
 			
 			// Store player stats (uses jQuery .extend to copy by value)
@@ -60,9 +63,10 @@ $(function() {
 			// Disable picking again
 			game.pickCharEnabled = false;
 
-		} else if (game.pickDefenderEnabled) {
+		} // 2nd stage: player chosen, pick an enemy to fight
+		else if (game.pickDefenderEnabled) {
 			
-			// Store this enemy (defender) stats (uses jQuery .extend to copy by value)
+			// Store enemy (defender) stats (uses jQuery .extend to copy by value)
 			let defenderRef = game.characterArray[$(this).attr("value")];
 			game.defender = $.extend(true, {}, defenderRef);
 
@@ -83,7 +87,6 @@ $(function() {
 	// Attack button
 	$("#attack").on("click", function(event){
 		if (game.attackButtonEnabled) {
-			let playerAttack
 
 			// Reduce defender HP by currentAttackPower, update defender visible HP
 			game.defender.HP -= game.currentAttackPower;
@@ -92,7 +95,7 @@ $(function() {
 			// If defender dead: hide defender, show appropriate text, increment enemiesDefeated 
 			if (game.defender.HP <= 0) {
 				$("#char_" + game.defender.index).css("visibility", "hidden");
-				$("#battle_text").html("You have defeated " + game.defender.name + ", you can choose to fight another enemy.");
+				$("#battle_text").html("You have defeated " + game.defender.name + "!  You can choose to fight another enemy.");
 				game.enemiesDefeated++;
 				
 				// If all enemies defeated: show appropriate text, show restart button
@@ -103,7 +106,7 @@ $(function() {
 					game.attackButtonEnabled = false;
 					game.pickDefenderEnabled = true;
 				}
-			} else {
+			} delse {
 
 				// Reduce player HP by defender.counter, update player visible HP
 				game.player.HP -= game.defender.counter;
@@ -132,43 +135,51 @@ $(function() {
 
 	// Restart button
 	$("#restart").on("click", function(event){
+		// Hide restart button after pressing
 		$("#restart").css("visibility", "hidden");
+
+		// Move all character divs back to choose_char, reset css values
 		$(".char-box").appendTo($("#choose_char"));
 		$(".char-box").css({"background-color": "white",
 			"border-color": "green",
 			"visibility": "visible"});
 		$(".char-text").css("color", "black");
+
+		// Reset all character HP to default
 		for (let i = 0; i < game.characterArray.length; i++) {
 			$("#hp_" + i).html(game.characterArray[i].HP);
 		}
+
+		// Clear battle text
 		$("#battle_text").html("");
+
+		// Reset game to starting state
+		game.enemiesDefeated = 0;
 		game.attackButtonEnabled = false;
 		game.pickCharEnabled = true;
 		game.pickDefenderEnabled = false;
 	});
 
     // Music toggle button
-	$("#musicToggle").on("click", function(event){
+	$("#music_toggle").on("click", function(event){
 		// Play if paused, pause if playing
 		if ($("#music").prop("paused")) {
 			$("#music").trigger("play");
-			$("#musicPlaying").html("Playing");
+			$("#music_text").html("Playing");
 		} else {
 			$("#music").trigger("pause");
-			$("#musicPlaying").html("Paused");
+			$("#music_text").html("Paused");
 		}
 	});
 
 	// Sfx toggle button
-	$("#sfxToggle").on("click", function(event){
-
-		// Toggle sound effects on/off
+	$("#sfx_toggle").on("click", function(event){
 		if (game.sfxOn) {
 			game.sfxOn = false;
-			$("#sfxOn").html = "Off";
+			$("#sfx_text").html("Off");
 		} else {
 			game.sfxOn = true;
-			$("#sfxOn").html = "On";
+			$("#sfx_text").html("On");
 		}
 	});
 });

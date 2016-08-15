@@ -38,16 +38,16 @@
 	</nav>
 
 	<div class="container main">
-		<!-- <div class="row fade-in">
+		<div class="row fade-in">
 			<section class="col-md-12">
-				<div class="page-header"><h2>RPG: Star Wars Edition</h2></div>
+				<div class="page-header"><h2>RPG Game</h2></div>
 
-				<blockquote>
+				<!-- <blockquote>
 					<p>Do, or do not.  There is no try.</p>
 					<small class="text-muted"><cite title="Source Title">Master Yoda</cite></small>
-				</blockquote>
+				</blockquote> -->
 			</section>
-		</div> -->
+		</div>
 
 		<div class="row fade-in">
 			<section class="col-md-12">
@@ -55,24 +55,24 @@
 				<!-- Choose player from here -->
 				<div id="choose_char" class="flex">
 					<div id="char_0" class="char-box" value=0>
-						<div id="name_0" class="text-center char-text">0</div>
-						<img src="assets/images/rpg/lorem.jpg">
-						<div id="hp_0" class="text-center char-text">100</div>
+						<div id="name_0" class="text-center char-text">&nbsp;</div>
+						<img class="char-portrait" src="assets/images/rpg/lorem.jpg">
+						<div id="hp_0" class="text-center char-text">&nbsp;</div>
 					</div>
 					<div id="char_1" class="char-box" value=1>
-						<div id="name_1" class="text-center char-text">1</div>
-						<img src="assets/images/rpg/lorem.jpg">
-						<div id="hp_1" class="text-center char-text">100</div>
+						<div id="name_1" class="text-center char-text">&nbsp;</div>
+						<img class="char-portrait" src="assets/images/rpg/lorem.jpg">
+						<div id="hp_1" class="text-center char-text">&nbsp;</div>
 					</div>
 					<div id="char_2" class="char-box" value=2>
-						<div id="name_2" class="text-center char-text">2</div>
-						<img src="assets/images/rpg/lorem.jpg">
-						<div id="hp_2" class="text-center char-text">100</div>
+						<div id="name_2" class="text-center char-text">&nbsp;</div>
+						<img class="char-portrait" src="assets/images/rpg/lorem.jpg">
+						<div id="hp_2" class="text-center char-text">&nbsp;</div>
 					</div>
 					<div id="char_3" class="char-box" value=3>
-						<div id="name_3" class="text-center char-text">3</div>
-						<img src="assets/images/rpg/lorem.jpg">
-						<div id="hp_3" class="text-center char-text">100</div>
+						<div id="name_3" class="text-center char-text">&nbsp;</div>
+						<img class="char-portrait" src="assets/images/rpg/lorem.jpg">
+						<div id="hp_3" class="text-center char-text">&nbsp;</div>
 					</div>
 				</div>
 
@@ -107,8 +107,8 @@
 		<div class="row fade-in top-margin">
 			<section class="col-md-12 text-center">
 				<div>
-					<button id="musicToggle" class="btn btn-default">Music: <span id="musicPlaying">Playing</span></button>&nbsp;&nbsp;
-					<button id="sfxToggle" class="btn btn-default">Sound Effects: <span id="sfxOn">On</span></button>
+					<button id="music_toggle" class="btn btn-default">Music: <span id="music_text">Playing</span></button>&nbsp;&nbsp;
+					<button id="sfx_toggle" class="btn btn-default">Sound Effects: <span id="sfx_text">On</span></button>
 				</div>
 			</section>
 		</div>
@@ -120,7 +120,7 @@
 		</div>
 	</footer>
 
-	<!-- <audio id="music" src="assets/music/imperialmarch.mp3" preload="none"></audio> -->
+	<audio id="music" src="assets/music/imperialmarch.mp3" preload="none" loop></audio>
 
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="assets/javascript/tabletop.js"></script>
