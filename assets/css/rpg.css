@@ -16,11 +16,12 @@ body {
 
 .flex {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .char-box {
 	background: white;
-	padding: 0 12px;
+	width: 178px;
 	border: 2px green solid;
 }
 
@@ -29,8 +30,9 @@ body {
 }
 
 .char-portrait {
-	width: 150px;
-	height: 100px;
+	display: block;
+	height: 80px;
+	margin: 0 auto;
 }
 
 .char-text {

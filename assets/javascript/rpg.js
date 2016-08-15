@@ -74,7 +74,7 @@ $(function() {
 			$(this).prependTo($("#defender"));
 			$(this).css("background-color", "black");
 			$("div", this).css("color", "white");
-			$("#battle_text").html("");
+			$("#battle_text").empty();
 
 			// Enable attacking
 			game.attackButtonEnabled = true;
@@ -106,9 +106,9 @@ $(function() {
 					game.attackButtonEnabled = false;
 					game.pickDefenderEnabled = true;
 				}
-			} delse {
+			} else {
 
-				// Reduce player HP by defender.counter, update player visible HP
+				// Reduce player HP by defender.counter, prevent player HP showing less than 0 (it looks bad!), update player visible HP
 				game.player.HP -= game.defender.counter;
 				if (game.player.HP <= 0) { game.player.HP = 0; }
 				$("#hp_" + game.player.index).html(game.player.HP);
@@ -138,20 +138,24 @@ $(function() {
 		// Hide restart button after pressing
 		$("#restart").css("visibility", "hidden");
 
-		// Move all character divs back to choose_char, reset css values
-		$(".char-box").appendTo($("#choose_char"));
+		// Move all character divs back to choose_char (in original order)
+		for (let i = 0; i < game.characterArray.length; i++) {
+			$("#char_" + i).appendTo("#choose_char");
+		}
+
+		// Reset all character css values
 		$(".char-box").css({"background-color": "white",
 			"border-color": "green",
 			"visibility": "visible"});
 		$(".char-text").css("color", "black");
 
-		// Reset all character HP to default
+		// Reset all characters' HP to default
 		for (let i = 0; i < game.characterArray.length; i++) {
 			$("#hp_" + i).html(game.characterArray[i].HP);
 		}
 
 		// Clear battle text
-		$("#battle_text").html("");
+		$("#battle_text").empty();
 
 		// Reset game to starting state
 		game.enemiesDefeated = 0;
@@ -173,14 +177,13 @@ $(function() {
 	});
 
 	// Sfx toggle button
-	$("#sfx_toggle").on("click", function(event){
-		if (game.sfxOn) {
-			game.sfxOn = false;
-			$("#sfx_text").html("Off");
-		} else {
-			game.sfxOn = true;
-			$("#sfx_text").html("On");
-		}
-	});
+	// $("#sfx_toggle").on("click", function(event){
+	// 	if (game.sfxOn) {
+	// 		game.sfxOn = false;
+	// 		$("#sfx_text").html("Off");
+	// 	} else {
+	// 		game.sfxOn = true;
+	// 		$("#sfx_text").html("On");
+	// 	}
+	// });
 });
-
